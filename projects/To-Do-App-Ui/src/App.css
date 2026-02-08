@@ -1,0 +1,26 @@
+h1 {
+  font-weight: 600;
+  margin: 1rem;
+  margin-bottom: 1.4rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2.5rem;
+}
+
+input{
+  width: 100%;
+  text-align: center;
+}
+
+.items-container{
+  text-align: left;
+}
+
+.my-row{
+  margin: 0.6rem 1rem;
+}
+
+.my-button{
+  min-width: 7rem;
+  align-self: center;
+  margin: 0rem 1.4rem;
+}
