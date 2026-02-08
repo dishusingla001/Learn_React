@@ -3,16 +3,17 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+
+  let foodItems = ['Dal','Vegetable','Salad','Roti','Paneer','Dahi']
   return (
     <React.Fragment>
       <h1>Delux Thali</h1>
-      <ul class="list-group">
-        <li class="list-group-item">Dal</li>
-        <li class="list-group-item">Vegetable</li>
-        <li class="list-group-item">Salad</li>
-        <li class="list-group-item">Roti</li>
-        <li class="list-group-item">Paneer</li>
-        <li class="list-group-item">Dahi</li>
+      <ul className="list-group">
+        {foodItems.map((items)=>
+          (
+            <li key={items} className="list-group-item">{items}</li>
+          )
+        )}
       </ul>
     </React.Fragment>
   );
