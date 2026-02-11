@@ -1,0 +1,14 @@
+input{
+  width: 100%;
+  text-align: center;
+}
+
+.my-row{
+  margin: 0.6rem 1rem;
+}
+
+.my-button{
+  min-width: 7rem;
+  align-self: center;
+  margin: 0rem 1.4rem;
+}
