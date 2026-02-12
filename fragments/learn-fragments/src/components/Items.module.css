@@ -1,0 +1,14 @@
+.my-item{
+  background-color: khaki;
+}
+
+.my-span{
+  font-weight: 500;
+  color: rgb(40, 40, 92);
+}
+
+.button{
+  float: right;
+  background-color: rgb(74, 61, 61);
+  color: white;
+}
