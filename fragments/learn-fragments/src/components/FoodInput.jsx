@@ -8,8 +8,6 @@ const FoodInput = ({handleKeyDown}) => {
       className={styles.foodInput}
       onKeyDown={handleKeyDown}
     />
-
-
   );
 };
 

@@ -6,19 +6,17 @@ const FoodItems = ({ items }) => {
   let [activeItems, setActiveItems] = useState([]);
 
   let onBuyButton = (item, event) => {
-    if (event.target.value == "buy") {
-      let newItems = [...activeItems, item];
-      setActiveItems(newItems);
-    } else if (event.target.value == "remove") {
-      let newItems = [...activeItems];
-      const index = newItems.indexOf(item); // Find the index of the item
-
-      if (index > -1) {
-        newItems.splice(index, 1); // Remove 1 element at the found index
+    let newItems;
+    if(event.target.value=='Buy'){
+      newItems = [...activeItems];
+      if (!newItems.includes(item)) {
+      newItems.push(item);
       }
-      
-      setActiveItems(newItems);
+    }else if(event.target.value=='Remove'){
+      newItems = activeItems.filter(Curritem => Curritem !== item);
     }
+
+    setActiveItems(newItems);
   };
 
   return (
