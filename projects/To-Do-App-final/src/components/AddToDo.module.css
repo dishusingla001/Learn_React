@@ -1,0 +1,17 @@
+input{
+  width: 70%;
+  padding: 0.3rem;
+  border: 1px solid black;
+  border-radius: .3rem;
+  text-align: center;
+}
+
+.my-row{
+  margin: 0.6rem 1rem;
+}
+
+.my-button{
+  min-width: 7rem;
+  align-self: center;
+  margin: 0rem 1.4rem;
+}
