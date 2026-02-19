@@ -1,9 +1,47 @@
 .my-button{
-  min-width: 7rem;
-  align-self: center;
-  margin: 0rem 1.4rem;
+  min-width: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
 }
 
+/* Let Bootstrap's .row handle the layout; keep small vertical spacing */
 .my-row{
   margin: 0.6rem 1rem;
+  border: 2px solid black;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+@media (max-width: 576px){
+  .my-row{margin:0.5rem 0}
+}
+
+/* keep the column contents vertically centered */
+.my-row > .col-6,
+.my-row > .col-4,
+.my-row > .col-2{
+  display:flex;
+  align-items:center;
+  min-width: 0;
+}
+
+/* prevent task text from wrapping and allow truncation with ellipsis */
+.my-row > .col-6 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.my-row > .col-4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }

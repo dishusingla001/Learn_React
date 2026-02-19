@@ -1,11 +1,12 @@
-.heading {
-  font-weight: 600;
-  margin: 1rem;
-  margin-bottom: 1.4rem;
-  width: 50%;
-  border-radius: 1rem;
-  border: 1px solid black;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 2.5rem;
-  background-color: white;
+.heading{
+  font-weight: 700;
+  margin: 1rem auto 1.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 1.8rem;
+  background: linear-gradient(90deg,#ffffff,#f7fbff);
+  color: var(--accent);
+  display: inline-block;
+  box-shadow: 0 6px 16px rgba(13,38,64,0.06);
 }

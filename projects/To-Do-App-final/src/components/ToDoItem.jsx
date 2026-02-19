@@ -1,4 +1,5 @@
 import styles from "./ToDoItem.module.css";
+import { MdDelete } from "react-icons/md";
 
 function ToDoItem({toDoName,toDoDate,onClickDelete}) {
 
@@ -8,8 +9,8 @@ function ToDoItem({toDoName,toDoDate,onClickDelete}) {
         <div className="col-6">{toDoName}</div>
         <div className="col-4">{toDoDate}</div>
         <div className="col-2">
-          <button onClick={onClickDelete} type="button"  className={`btn btn-danger ${styles['my-button']}`}>
-            Delete
+          <button onClick={onClickDelete} type="button"  className={`${styles['my-button']} btn btn-danger`}>
+            <MdDelete />
           </button>
         </div>
       </div>
