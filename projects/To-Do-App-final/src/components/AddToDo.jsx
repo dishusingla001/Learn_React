@@ -14,7 +14,8 @@ function AddToDo({ onNewItem }) {
     setToDoDate(event.target.value);
   };
 
-  const handleAddButton = () => {
+  const handleAddButton = (event) => {
+    event.preventDefault();
     onNewItem(toDoName, toDoDate);
 
     setToDoDate("");
@@ -22,7 +23,7 @@ function AddToDo({ onNewItem }) {
   };
   return (
     <div className="container text-center">
-      <div className={`${styles["my-row"]} row`}>
+      <form onSubmit={handleAddButton} className={`${styles["my-row"]} row`}>
         <div className="col-6">
           <input
             value={toDoName}
@@ -36,14 +37,13 @@ function AddToDo({ onNewItem }) {
         </div>
         <div className="col-2">
           <button
-            type="button"
-            className={`${styles["my-button"]} btn btn-success`}
-            onClick={handleAddButton}
+            type="submit"
+            className={`${styles["my-button"]} btn btn-success`} 
           >
             <IoIosAddCircle />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
