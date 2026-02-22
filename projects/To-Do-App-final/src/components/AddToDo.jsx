@@ -1,39 +1,31 @@
-import { useState } from "react";
+import { useRef } from "react";
 import styles from "./AddToDo.module.css";
 import { IoIosAddCircle } from "react-icons/io";
 
 function AddToDo({ onNewItem }) {
-  const [toDoName, setToDoName] = useState("");
-  const [toDoDate, setToDoDate] = useState("");
-
-  const handleToDoInput = (event) => {
-    setToDoName(event.target.value);
-  };
-
-  const handleToDoDate = (event) => {
-    setToDoDate(event.target.value);
-  };
+  const toDoElement = useRef();
+  const toDoDateElement = useRef();
 
   const handleAddButton = (event) => {
     event.preventDefault();
+    const toDoName = toDoElement.current.value;
+    const toDoDate = toDoDateElement.current.value;
+    toDoElement.current.value = "";
+    toDoDateElement.current.value = "";
     onNewItem(toDoName, toDoDate);
-
-    setToDoDate("");
-    setToDoName("");
   };
   return (
     <div className="container text-center">
       <form onSubmit={handleAddButton} className={`${styles["my-row"]} row`}>
         <div className="col-6">
           <input
-            value={toDoName}
-            onChange={handleToDoInput}
+            ref={toDoElement}
             type="text"
             placeholder="Enter Task"
           />
         </div>
         <div className="col-4">
-          <input value={toDoDate} onChange={handleToDoDate} type="date" />
+          <input ref={toDoDateElement} type="date" />
         </div>
         <div className="col-2">
           <button
