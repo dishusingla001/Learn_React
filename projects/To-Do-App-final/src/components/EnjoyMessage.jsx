@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import styles from "./EnjoyMessage.module.css";
+import { ToDoItemsContext } from "../store/todo-item-store";
 
-const EnjoyMessage = ({ toDoItem }) => {
+const EnjoyMessage = () => {
+
+  const {toDoItem} = useContext(ToDoItemsContext);
+
   if (toDoItem.length === 0) {
     return (
       <>

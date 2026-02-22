@@ -5,27 +5,38 @@ import "./App.css";
 import Container from "./components/Container";
 import EnjoyMessage from "./components/EnjoyMessage";
 import { useState } from "react";
+import { ToDoItemsContext } from "./store/todo-item-store";
 
 function App() {
   const [toDoItem, setTodoItems] = useState([]);
 
-  const handleNewItem = (itemName, itemDate) => {
-    let newItems = [...toDoItem, { toDoName: itemName, toDoDate: itemDate }];
-    setTodoItems(newItems);
+  const addNewItem = (itemName, itemDate) => {
+    setTodoItems((currentValue) => [
+      ...currentValue,
+      { toDoName: itemName, toDoDate: itemDate },
+    ]);
   };
 
-  const handleDeleteButton = (item) => {
-    const updatedItem = toDoItem.filter((elements)=>elements!==item);
+  const deleteItem = (toDoItemName) => {
+    const updatedItem = toDoItem.filter((elements) => elements.toDoName !== toDoItemName);
     setTodoItems(updatedItem);
-  }
+  };
 
   return (
-    <Container>
-      <AppName />
-      <AddToDo onNewItem={handleNewItem} />
-      <EnjoyMessage toDoItem={toDoItem}/>
-      <ToDoitems onClickDelete={handleDeleteButton} todoItem={toDoItem} />
-    </Container>
+    <ToDoItemsContext.Provider
+      value={{
+        toDoItem,
+        addNewItem,
+        deleteItem,
+      }}
+    >
+      <Container>
+        <AppName />
+        <AddToDo />
+        <EnjoyMessage />
+        <ToDoitems />
+      </Container>
+    </ToDoItemsContext.Provider>
   );
 }
 

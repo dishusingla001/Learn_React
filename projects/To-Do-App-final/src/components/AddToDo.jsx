@@ -1,8 +1,11 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import styles from "./AddToDo.module.css";
 import { IoIosAddCircle } from "react-icons/io";
+import { ToDoItemsContext } from "../store/todo-item-store";
 
-function AddToDo({ onNewItem }) {
+function AddToDo() {
+  const {addNewItem} = useContext(ToDoItemsContext);
+
   const toDoElement = useRef();
   const toDoDateElement = useRef();
 
@@ -12,8 +15,9 @@ function AddToDo({ onNewItem }) {
     const toDoDate = toDoDateElement.current.value;
     toDoElement.current.value = "";
     toDoDateElement.current.value = "";
-    onNewItem(toDoName, toDoDate);
+    addNewItem(toDoName, toDoDate);
   };
+  
   return (
     <div className="container text-center">
       <form onSubmit={handleAddButton} className={`${styles["my-row"]} row`}>
