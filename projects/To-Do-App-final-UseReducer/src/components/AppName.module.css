@@ -1,0 +1,12 @@
+.heading{
+  font-weight: 700;
+  margin: 1rem auto 1.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 1.8rem;
+  background: linear-gradient(90deg,#ffffff,#f7fbff);
+  color: var(--accent);
+  display: inline-block;
+  box-shadow: 0 6px 16px rgba(13,38,64,0.06);
+}

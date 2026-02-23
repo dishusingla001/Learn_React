@@ -1,0 +1,39 @@
+input{
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  text-align: left;
+  background: #fff;
+  min-width: 0;
+}
+
+.my-row{
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 0.6rem 0;
+  flex-wrap: nowrap;
+}
+
+.my-button{
+  min-width: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+}
+
+/* allow stacking only on very small screens */
+@media (max-width: 420px){
+  .my-row{flex-direction:column;align-items:stretch}
+}
+
+/* ensure bootstrap column children align correctly inside our flex row */
+.my-row > .col-6,
+.my-row > .col-4,
+.my-row > .col-2{
+  display:flex;
+  align-items:center;
+}
