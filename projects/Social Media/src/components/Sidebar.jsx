@@ -1,9 +1,9 @@
-const Sidebar = () => {
+const Sidebar = ({ selectedTab, setSelectedTab }) => {
   return (
     <>
       <div
         className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
-        style={{width: "280px"}} 
+        style={{ width: "280px" }}
       >
         <a
           href="/"
@@ -24,7 +24,15 @@ const Sidebar = () => {
           {" "}
           <li className="nav-item">
             {" "}
-            <a href="#" className="nav-link active" aria-current="page">
+            <a
+              href="#"
+              className={`nav-link text-white ${selectedTab === "Home" && "active"}`}
+              aria-current="page"
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedTab("Home");
+              }}
+            >
               {" "}
               <svg
                 className="bi pe-none me-2"
@@ -39,7 +47,14 @@ const Sidebar = () => {
           </li>{" "}
           <li>
             {" "}
-            <a href="#" className="nav-link text-white">
+            <a
+              href="#"
+              className={`nav-link text-white ${selectedTab === "CreatePost" && "active"}`}
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedTab("CreatePost");
+              }}
+            >
               {" "}
               <svg
                 className="bi pe-none me-2"
@@ -103,6 +118,5 @@ const Sidebar = () => {
     </>
   );
 };
-
 
 export default Sidebar;
