@@ -12,7 +12,7 @@
 }
 
 .post-card{
-  margin: 20px 50px;
+  margin: 50px 50px;
   width: 30rem;
 }
 
@@ -29,4 +29,12 @@
   width: 80%;
   margin-left: 10%;
   margin-top: 3rem;
+}
+
+.welcomeMessage{
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 2rem;
+  margin-top: 4rem;
+  background-color: white;
 }

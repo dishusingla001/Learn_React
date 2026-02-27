@@ -68,22 +68,22 @@ const PostListProvider = ({ children }) => {
 };
 
 const DEFAUT_POST_LIST = [
-  {
-    id: "1",
-    title: "Going to Mumbai",
-    body: "Hi Friends, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out.",
-    reactions: 2,
-    userId: "user-9",
-    tags: ["vacations", "Mumbai", "Enjoying"],
-  },
-  {
-    id: "2",
-    title: "Understanding useReducer",
-    body: "useReducer is very useful for managing complex state logic in large applications.",
-    reactions: 8,
-    userId: "user-12",
-    tags: ["react", "hooks", "useReducer"],
-  },
+  // {
+  //   id: "1",
+  //   title: "Going to Mumbai",
+  //   body: "Hi Friends, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out.",
+  //   reactions: 2,
+  //   userId: "user-9",
+  //   tags: ["vacations", "Mumbai", "Enjoying"],
+  // },
+  // {
+  //   id: "2",
+  //   title: "Understanding useReducer",
+  //   body: "useReducer is very useful for managing complex state logic in large applications.",
+  //   reactions: 8,
+  //   userId: "user-12",
+  //   tags: ["react", "hooks", "useReducer"],
+  // },
 ];
 
 export default PostListProvider;
