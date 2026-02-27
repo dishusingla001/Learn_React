@@ -10,32 +10,51 @@ const postListReducer = (currPostList, action) => {
   let newPostList = currPostList;
 
   if (action.type === "ADD_POST") {
-    newPostList = [...currPostList, action.payload];
-  } else if (action.type === "DELTE_POST") {
-    newPostList = currPostList.filter((posts) => {
-      return posts != action.payload;
-    });
+    const Post = {
+      id: crypto.randomUUID(),
+      title: action.payload.postTitle,
+      body: action.payload.postBody,
+      reactions: action.payload.postReactions,
+      userId: action.payload.userId,
+      tags: action.payload.tags,
+    };
+    newPostList = [Post,...currPostList];
+  } else if (action.type === "DELETE_POST") {
+    newPostList = currPostList.filter(
+      (posts) => posts.id != action.payload.Postid,
+    );
   }
 
   return newPostList;
 };
 
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostList] = useReducer(postListReducer,DEFAUT_POST_LIST);
+  const [postList, dispatchPostList] = useReducer(
+    postListReducer,
+    DEFAUT_POST_LIST,
+  );
 
-  const addPost = () => {
+  const addPost = (userId, postTitle, postBody, postReactions, tags) => {
     const addNewPostAction = {
       type: "ADD_POST",
-      payload: post,
+      payload: {
+        userId,
+        postTitle,
+        postBody,
+        postReactions,
+        tags,
+      },
     };
 
     dispatchPostList(addNewPostAction);
   };
 
-  const deletePost = () => {
+  const deletePost = (Postid) => {
     const deletePostAction = {
       type: "DELETE_POST",
-      payload: post,
+      payload: {
+        Postid,
+      },
     };
 
     dispatchPostList(deletePostAction);
@@ -48,7 +67,6 @@ const PostListProvider = ({ children }) => {
   );
 };
 
-
 const DEFAUT_POST_LIST = [
   {
     id: "1",
@@ -56,16 +74,16 @@ const DEFAUT_POST_LIST = [
     body: "Hi Friends, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out.",
     reactions: 2,
     userId: "user-9",
-    tags: ["vacations", "Mumbai", "Enjoying"]
+    tags: ["vacations", "Mumbai", "Enjoying"],
   },
   {
-    id: 2,
+    id: "2",
     title: "Understanding useReducer",
     body: "useReducer is very useful for managing complex state logic in large applications.",
     reactions: 8,
     userId: "user-12",
-    tags: ["react", "hooks", "useReducer"]
-  }
+    tags: ["react", "hooks", "useReducer"],
+  },
 ];
 
 export default PostListProvider;
