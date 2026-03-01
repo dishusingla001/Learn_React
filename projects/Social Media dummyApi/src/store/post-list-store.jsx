@@ -1,9 +1,9 @@
-import { createContext, useReducer } from "react";
+import { createContext, useCallback, useReducer } from "react";
 
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
-  addInitialPost:() => {},
+  addInitialPost: () => {},
   deletePost: () => {},
 });
 
@@ -11,14 +11,13 @@ const postListReducer = (currPostList, action) => {
   let newPostList = currPostList;
 
   if (action.type === "ADD_POST") {
-    newPostList = [action.payload,...currPostList];
-  } 
-  else if (action.type === "DELETE_POST") {
+    newPostList = [action.payload, ...currPostList];
+  } else if (action.type === "DELETE_POST") {
     newPostList = currPostList.filter(
       (posts) => posts.id != action.payload.Postid,
     );
-  }else if(action.type==="ADD_INITIAL_POST"){
-    newPostList=action.payload.posts;
+  } else if (action.type === "ADD_INITIAL_POST") {
+    newPostList = action.payload.posts;
   }
   return newPostList;
 };
@@ -33,12 +32,12 @@ const PostListProvider = ({ children }) => {
     const addNewPostAction = {
       type: "ADD_POST",
       payload: {
-        id:crypto.randomUUID(),
-        title:postTitle,
-        body:postBody,
-        reactions:postReactions,
-        userId:userId,
-        tags:tags,
+        id: crypto.randomUUID(),
+        title: postTitle,
+        body: postBody,
+        reactions: postReactions,
+        userId: userId,
+        tags: tags,
       },
     };
 
@@ -49,26 +48,31 @@ const PostListProvider = ({ children }) => {
     const addNewPostAction = {
       type: "ADD_INITIAL_POST",
       payload: {
-        posts
+        posts,
       },
     };
 
     dispatchPostList(addNewPostAction);
   };
 
-  const deletePost = (Postid) => {
-    const deletePostAction = {
-      type: "DELETE_POST",
-      payload: {
-        Postid,
-      },
-    };
+  const deletePost = useCallback(
+    (Postid) => {
+      const deletePostAction = {
+        type: "DELETE_POST",
+        payload: {
+          Postid,
+        },
+      };
 
-    dispatchPostList(deletePostAction);
-  };
+      dispatchPostList(deletePostAction);
+    },
+    [dispatchPostList],
+  );
 
   return (
-    <PostList.Provider value={{ postList, addPost,addInitialPost, deletePost }}>
+    <PostList.Provider
+      value={{ postList, addPost, addInitialPost, deletePost }}
+    >
       {children}
     </PostList.Provider>
   );
