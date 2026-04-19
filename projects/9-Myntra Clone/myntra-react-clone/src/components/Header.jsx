@@ -3,18 +3,19 @@ import { FaHeart } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
 import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
       <div className="logo_container">
-        <a href="#">
+        <Link to="/">
           <img
             className="myntra_home"
             src="../images/myntra_logo.webp"
             alt="Myntra Home"
           />
-        </a>
+        </Link>
       </div>
 
       <nav className="nav_bar">
@@ -49,11 +50,11 @@ const Header = () => {
           <span className="action_name">Wishlist</span>
         </div>
 
-        <div className={styles.actionContainer}>
+        <Link to="/Bag" className={styles.actionContainer}>
           <HiOutlineShoppingBag />
           <span className="action_name">Bag</span>
           <span className="bag-item-count">0</span>
-        </div>
+        </Link>
       </div>
     </header>
   );
