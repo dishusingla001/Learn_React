@@ -1,11 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit";
+import itemSlice from "./itemSlice";
+import fetchStatusSlice from "./fetchStatusSlice";
+import BagSlice from "./BagItems";
 
-const  itemSlice = {
-  name:'items',
-  initialState:{},
-  reducers:{
-    addInitialItems : (store,action) => {
-      return store;
-    }
-  }
-}
+const myntraStore = configureStore({
+  reducer: {
+    items: itemSlice.reducer,
+    fetchStatus: fetchStatusSlice.reducer,
+    bag: BagSlice.reducer,
+  },
+});
+
+export default myntraStore;

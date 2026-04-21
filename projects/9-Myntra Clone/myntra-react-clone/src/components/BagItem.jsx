@@ -1,4 +1,15 @@
-const BagItem = ({item}) => {
+import { useDispatch } from "react-redux";
+import { BagActions } from "../store/BagItems";
+import { MdDelete } from "react-icons/md";
+
+const BagItem = ({item}) => { 
+
+  const dispatch = useDispatch();
+
+  const handleRemoveButton = () => {
+    dispatch(BagActions.removefromBag(item.id));
+  }
+
   return (
     <>
       <div className="bag-item-container">
@@ -25,8 +36,8 @@ const BagItem = ({item}) => {
           </div>
         </div>
 
-        <div className="remove-from-cart" onclick={ ()=> console.log("Cart button clicked")}>
-          X
+        <div className="remove-from-cart" onClick={handleRemoveButton}>
+          <MdDelete />
         </div>
       </div>
     </>

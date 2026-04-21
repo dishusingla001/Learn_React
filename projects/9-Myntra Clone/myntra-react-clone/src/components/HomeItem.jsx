@@ -1,4 +1,13 @@
+import { useDispatch } from "react-redux";
+import { itemsActions } from "../store/itemSlice";
+import { BagActions } from "../store/BagItems";
+
 const HomeItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handlebagItems = () => {
+    dispatch(BagActions.addtoBag(item.id));
+  };
   return (
     <div className="item-container">
       <img className="item-image" src={item.image} alt="item image" />
@@ -12,12 +21,7 @@ const HomeItem = ({ item }) => {
         <span className="original-price">Rs {item.original_price}</span>
         <span className="discount">({item.discount_percentage}% OFF)</span>
       </div>
-      <button
-        className="btn-add-bag"
-        onClick={() => {
-          console.log("Item was Clicked");
-        }}
-      >
+      <button className="btn-add-bag" onClick={handlebagItems}>
         Add to Bag
       </button>
     </div>

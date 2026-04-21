@@ -4,8 +4,12 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
+  const cartItems = useSelector((store)=>store.bag);
+
   return (
     <header>
       <div className="logo_container">
@@ -53,7 +57,7 @@ const Header = () => {
         <Link to="/Bag" className={styles.actionContainer}>
           <HiOutlineShoppingBag />
           <span className="action_name">Bag</span>
-          <span className="bag-item-count">0</span>
+          <span className="bag-item-count">{cartItems.length}</span>
         </Link>
       </div>
     </header>
